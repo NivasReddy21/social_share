@@ -19,7 +19,6 @@
         NSString *stickerImage = call.arguments[@"stickerImage"];
         NSString *backgroundTopColor = call.arguments[@"backgroundTopColor"];
         NSString *backgroundBottomColor = call.arguments[@"backgroundBottomColor"];
-        NSString *attributionURL = call.arguments[@"attributionURL"];
         NSString *backgroundImage = call.arguments[@"backgroundImage"];
         //getting image from file
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -40,7 +39,6 @@
              NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.stickerImage" : imgShare,
                                             @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                             @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                            @"com.instagram.sharedSticker.attributionURL" : attributionURL
              }];
              if (@available(iOS 10.0, *)) {
              NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
@@ -66,7 +64,6 @@
                                               @"com.instagram.sharedSticker.stickerImage" : imgShare,
                                               @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                               @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                              @"com.instagram.sharedSticker.attributionURL" : attributionURL
                           }];
                           if (@available(iOS 10.0, *)) {
                           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
