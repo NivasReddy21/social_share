@@ -103,7 +103,7 @@
             NSArray *pasteboardItems = @[@{@"com.facebook.sharedSticker.stickerImage" : imgShare,
                                            @"com.facebook.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                            @"com.facebook.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                           @"com.facebook.sharedSticker.attribution" : attributionURL,
+                                           @"com.facebook.sharedSticker.attributionURL" : attributionURL,
                                            @"com.facebook.sharedSticker.appID" : appID}];
             if (@available(iOS 10.0, *)) {
             NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
