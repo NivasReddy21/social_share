@@ -40,7 +40,7 @@
              NSArray *pasteboardItems = @[@{@"com.instagram.sharedSticker.stickerImage" : imgShare,
                                             @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                             @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                            @"com.instagram.sharedSticker.contentURL" : attributionURL
+                                            @"com.instagram.sharedSticker.attributionURL" : attributionURL
              }];
              if (@available(iOS 10.0, *)) {
              NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
@@ -66,7 +66,7 @@
                                               @"com.instagram.sharedSticker.stickerImage" : imgShare,
                                               @"com.instagram.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                               @"com.instagram.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                              @"com.instagram.sharedSticker.contentURL" : attributionURL
+                                              @"com.instagram.sharedSticker.attributionURL" : attributionURL
                           }];
                           if (@available(iOS 10.0, *)) {
                           NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
@@ -103,7 +103,7 @@
             NSArray *pasteboardItems = @[@{@"com.facebook.sharedSticker.stickerImage" : imgShare,
                                            @"com.facebook.sharedSticker.backgroundTopColor" : backgroundTopColor,
                                            @"com.facebook.sharedSticker.backgroundBottomColor" : backgroundBottomColor,
-                                           @"com.facebook.sharedSticker.contentURL" : attributionURL,
+                                           @"com.facebook.sharedSticker.attribution" : attributionURL,
                                            @"com.facebook.sharedSticker.appID" : appID}];
             if (@available(iOS 10.0, *)) {
             NSDictionary *pasteboardOptions = @{UIPasteboardOptionExpirationDate : [[NSDate date] dateByAddingTimeInterval:60 * 5]};
