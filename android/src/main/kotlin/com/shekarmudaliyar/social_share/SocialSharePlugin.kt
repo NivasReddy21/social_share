@@ -1,21 +1,10 @@
 package com.shekarmudaliyar.social_share
 
-import com.snapchat.kit.sdk.SnapCreative;
-import com.snapchat.kit.sdk.SnapLogin;
-import com.snapchat.kit.sdk.creative.api.SnapCreativeKitApi;
-import com.snapchat.kit.sdk.creative.exceptions.SnapMediaSizeException;
-import com.snapchat.kit.sdk.creative.exceptions.SnapStickerSizeException;
-import com.snapchat.kit.sdk.creative.media.SnapMediaFactory;
-import com.snapchat.kit.sdk.creative.media.SnapPhotoFile;
-import com.snapchat.kit.sdk.creative.media.SnapSticker;
-import com.snapchat.kit.sdk.creative.media.SnapVideoFile;
-import com.snapchat.kit.sdk.creative.models.SnapContent;
-import com.snapchat.kit.sdk.creative.models.SnapLiveCameraContent;
-import com.snapchat.kit.sdk.creative.models.SnapPhotoContent;
-import com.snapchat.kit.sdk.login.models.MeData;
-import com.snapchat.kit.sdk.login.models.UserDataResponse;
-import com.snapchat.kit.sdk.login.networking.FetchUserDataCallback;
-import com.snapchat.kit.sdk.util.SnapUtils;
+import com.snapchat.kit.sdk.SnapCreative
+import com.snapchat.kit.sdk.creative.media.SnapLensLaunchData
+import com.snapchat.kit.sdk.creative.media.SnapMediaFactory
+import com.snapchat.kit.sdk.creative.media.SnapSticker
+import com.snapchat.kit.sdk.creative.models.SnapPhotoContent
 
 import android.app.Activity
 import android.content.*
@@ -89,8 +78,8 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
         
         else if (call.method == "shareSnapchat") {
             val stickerImage: String? = call.argument("stickerImage")
-            SnapCreativeKitApi snapCreativeKitApi = SnapCreative.getApi(activity);
-            SnapMediaFactory snapMediaFactory = SnapCreative.getMediaFactory(activity);
+            SnapCreativeKitApi snapCreativeKitApi = SnapCreative.getApi(context);
+            SnapMediaFactory snapMediaFactory = SnapCreative.getMediaFactory(context);
             SnapPhotoFile photoFile = snapMediaFactory.getSnapPhotoFromFile(File(stickerImage));
             SnapPhotoContent snapPhotoContent = new SnapPhotoContent(photoFile);
             snapCreativeKitApi.send(snapPhotoContent);
