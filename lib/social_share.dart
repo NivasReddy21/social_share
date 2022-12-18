@@ -70,6 +70,33 @@ class SocialShare {
     return response;
   }
 
+  static Future<String?> shareSnap(String imagePath) async {
+    Map<String, dynamic> args;
+    if (Platform.isIOS) {
+      args = {};
+    } else {
+      final tempDir = await getTemporaryDirectory();
+
+      File file = File(imagePath);
+      Uint8List bytes = file.readAsBytesSync();
+      var stickerData = bytes.buffer.asUint8List();
+      String stickerAssetName = 'stickerAsset.png';
+      final Uint8List stickerAssetAsList = stickerData;
+      final stickerAssetPath = '${tempDir.path}/$stickerAssetName';
+      file = await File(stickerAssetPath).create();
+      file.writeAsBytesSync(stickerAssetAsList);
+
+      args = <String, dynamic>{
+        "stickerImage": stickerAssetName,
+      };
+    }
+    final String? response = await _channel.invokeMethod(
+      'shareSnapchat',
+      args,
+    );
+    return response;
+  }
+
   static Future<String?> shareFacebookStory(
       String imagePath,
       String backgroundTopColor,
