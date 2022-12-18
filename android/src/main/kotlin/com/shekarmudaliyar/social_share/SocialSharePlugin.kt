@@ -78,10 +78,10 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
         
         else if (call.method == "shareSnapchat") {
             val stickerImage: String? = call.argument("stickerImage")
-            SnapCreativeKitApi snapCreativeKitApi = SnapCreative.getApi(context);
-            SnapMediaFactory snapMediaFactory = SnapCreative.getMediaFactory(context);
-            SnapPhotoFile photoFile = snapMediaFactory.getSnapPhotoFromFile(File(stickerImage));
-            SnapPhotoContent snapPhotoContent = new SnapPhotoContent(photoFile);
+            val SnapCreativeKitApi snapCreativeKitApi = SnapCreative.getApi(activeContext);
+            val SnapMediaFactory snapMediaFactory = SnapCreative.getMediaFactory(activeContext);
+            val SnapPhotoFile photoFile = snapMediaFactory.getSnapPhotoFromFile(File(activeContext!!.cacheDir,stickerImage));
+            val SnapPhotoContent snapPhotoContent = new SnapPhotoContent(photoFile);
             snapCreativeKitApi.send(snapPhotoContent);
         }
         
