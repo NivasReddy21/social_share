@@ -49,7 +49,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
             val backgroundBottomColor: String? = call.argument("backgroundBottomColor")
             val attributionURL: String? = call.argument("attributionURL")
             val file =  File(activeContext!!.cacheDir,stickerImage)
-            val stickerImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".com.shekarmudaliyar.social_share", file)
+            val stickerImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName, file)
 
             val intent = Intent("com.instagram.share.ADD_TO_STORY")
             intent.type = "image/*"
@@ -59,7 +59,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
             if (backgroundImage!=null) {
                 //check if background image is also provided
                 val backfile =  File(activeContext!!.cacheDir,backgroundImage)
-                val backgroundImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".com.shekarmudaliyar.social_share", backfile)
+                val backgroundImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName, backfile)
                 intent.setDataAndType(backgroundImageFile,"image/*")
             }
             intent.putExtra("content_url", attributionURL)
@@ -75,15 +75,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
                 result.success("error")
             }
         }
-        
-        else if (call.method == "shareSnapchat") {
-            val stickerImage: String? = call.argument("stickerImage")
-            val snapCreativeKitApi = SnapCreative.getApi(activeContext!!)
-            val snapMediaFactory = SnapCreative.getMediaFactory(activeContext!!)
-            val photoFile = snapMediaFactory.getSnapPhotoFromFile(File(activeContext!!.cacheDir,stickerImage))
-            val snapPhotoContent = SnapPhotoContent(photoFile)
-            snapCreativeKitApi.send(snapPhotoContent)
-        }
+    
         
         else if (call.method == "shareFacebookStory") {
             //share on facebook story
