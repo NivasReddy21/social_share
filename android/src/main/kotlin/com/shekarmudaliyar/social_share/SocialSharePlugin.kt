@@ -77,7 +77,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
             val backgroundVideo: String? = call.argument("backgroundVideo")
 
             val file =  File(activeContext!!.cacheDir,stickerImage)
-            val stickerImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".com.shekarmudaliyar.social_share", file)
+            val stickerImageFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".fileprovider", file)
             val appId: String? = call.argument("appId")
 
             val intent = Intent(intentString)
@@ -101,7 +101,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
             if (backgroundVideo!=null) {
                 //check if background video is also provided
                 val backfile =  File(activeContext!!.cacheDir,backgroundVideo)
-                val backgroundVideoFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".com.shekarmudaliyar.social_share", backfile)
+                val backgroundVideoFile = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".fileprovider", backfile)
                 intent.setDataAndType(backgroundVideoFile,"video/*")
             }
 
@@ -127,7 +127,7 @@ class SocialSharePlugin:FlutterPlugin, MethodCallHandler, ActivityAware {
             if (image!=null) {
                 //check if  image is also provided
                 val imagefile =  File(activeContext!!.cacheDir,image)
-                val imageFileUri = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".com.shekarmudaliyar.social_share", imagefile)
+                val imageFileUri = FileProvider.getUriForFile(activeContext!!, activeContext!!.applicationContext.packageName + ".fileProvider", imagefile)
                 intent.type = "image/*"
                 intent.putExtra(Intent.EXTRA_STREAM,imageFileUri)
             } else {
