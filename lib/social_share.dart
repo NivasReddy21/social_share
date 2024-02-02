@@ -14,6 +14,7 @@ class SocialShare {
     String? backgroundBottomColor,
     String? backgroundResourcePath,
     String? attributionURL,
+    String? linkText,
   }) async {
     return shareMetaStory(
       appId: appId,
@@ -23,6 +24,7 @@ class SocialShare {
       backgroundBottomColor: backgroundBottomColor,
       attributionURL: attributionURL,
       backgroundResourcePath: backgroundResourcePath,
+      linkText: linkText,
     );
   }
 
@@ -53,6 +55,7 @@ class SocialShare {
     String? backgroundBottomColor,
     String? attributionURL,
     String? backgroundResourcePath,
+    String? linkText,
   }) async {
     var _imagePath = imagePath;
     var _backgroundResourcePath = backgroundResourcePath;
@@ -73,7 +76,8 @@ class SocialShare {
       "backgroundTopColor": backgroundTopColor,
       "backgroundBottomColor": backgroundBottomColor,
       "attributionURL": attributionURL,
-      "appId": appId
+      "appId": appId,
+      "linkText": linkText ?? "",
     };
 
     if (_backgroundResourcePath != null) {
