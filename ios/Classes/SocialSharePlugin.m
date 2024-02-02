@@ -31,6 +31,7 @@
         NSString *backgroundBottomColor = call.arguments[@"backgroundBottomColor"];
         NSString *backgroundImage = call.arguments[@"backgroundImage"];
         NSString *backgroundVideo = call.arguments[@"backgroundVideo"];
+        NSString *linkText = call.arguments[@"linkText"];
         
         NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -47,7 +48,7 @@
         }
         
         // Assign background image asset and attribution link URL to pasteboard
-        NSMutableDictionary *pasteboardItems = [[NSMutableDictionary alloc]initWithDictionary: @{[NSString stringWithFormat:@"%@.stickerImage",destination] : imgShare}];
+        NSMutableDictionary *pasteboardItems = [[NSMutableDictionary alloc]initWithDictionary: @{[NSString stringWithFormat:@"%@.stickerImage",destination] : imgShare, @"public.utf8-plain-text" : [linkText dataUsingEncoding:NSUTF8StringEncoding]}];
         
         if (![backgroundTopColor isKindOfClass:[NSNull class]]) {
             [pasteboardItems setObject:backgroundTopColor forKey:[NSString stringWithFormat:@"%@.backgroundTopColor",destination]];
